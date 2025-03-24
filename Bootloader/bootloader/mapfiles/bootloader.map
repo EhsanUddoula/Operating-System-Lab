@@ -1,0 +1,228 @@
+
+There are no discarded input sections
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x08000000         0x00008000         xr
+SRAM             0x20000000         0x00020000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD object/bootloader.o
+LOAD object/cm4.o
+LOAD object/sys_clock.o
+
+.text           0x08000000     0x1238
+                0x08000000                        _stext = .
+ *(.isr_vector)
+ .isr_vector    0x08000000      0x1c4 object/bootloader.o
+                0x08000000                NVIC_VECTOR
+ *(.text)
+ .text          0x080001c4      0x9ec object/bootloader.o
+                0x080001c4                Reset_Handler
+                0x080002c0                bootloader_check_for_update
+                0x08000330                os_update
+                0x0800052c                crc32_hardware
+                0x08000578                crc32_manual
+                0x0800060c                uint32_to_string
+                0x080006e0                format_version_string
+                0x08000774                Flash_Unlock
+                0x080007a4                flash_lock
+                0x080007c4                Flash_EraseSector
+                0x08000858                Flash_Write
+                0x080008cc                Flash_write4bytes
+                0x0800095c                bootloader_jump_to_os
+                0x0800098c                uart_config
+                0x08000a44                UART_SendChar
+                0x08000a72                UART_SendString
+                0x08000aa2                UART_GetChar
+                0x08000acc                UART_GetString
+                0x08000b16                get_version_major
+                0x08000b2c                get_version_minor
+                0x08000b44                set_OS_version
+                0x08000b80                RTC_WKUP_Handler
+                0x08000b80                FLASH_Handler
+                0x08000b80                DMA2_Stream7_Handler
+                0x08000b80                OTG_HS_Handler
+                0x08000b80                DMA2_Stream3_Handler
+                0x08000b80                USART3_Handler
+                0x08000b80                PendSV_Handler
+                0x08000b80                NMI_Handler
+                0x08000b80                SAI1_Handler
+                0x08000b80                TIM6_DAC_Handler
+                0x08000b80                CAN1_RX1_Handler
+                0x08000b80                EXTI15_10_Handler
+                0x08000b80                ADC_Handler
+                0x08000b80                I2C1_EV_Handler
+                0x08000b80                TAMP_STAMP_Handler
+                0x08000b80                I2C3_ER_Handler
+                0x08000b80                WWDG_Handler
+                0x08000b80                EXTI4_Handler
+                0x08000b80                I2C3_EV_Handler
+                0x08000b80                DMA1_Stream1_Handler
+                0x08000b80                DMA2_Stream4_Handler
+                0x08000b80                DMA1_Stream7_Handler
+                0x08000b80                OTG_FS_Handler
+                0x08000b80                TIM1_BRK_TIM9_Handler
+                0x08000b80                I2C1_ER_Handler
+                0x08000b80                DMA1_Stream3_Handler
+                0x08000b80                UsageFault_Handler
+                0x08000b80                TIM1_UP_TIM10_Handler
+                0x08000b80                CAN1_RX0_Handler
+                0x08000b80                TIM1_CC_Handler
+                0x08000b80                I2C2_ER_Handler
+                0x08000b80                USART6_Handler
+                0x08000b80                TIM8_CC_Handler
+                0x08000b80                HDMI_CEC_Handler
+                0x08000b80                SAI2_Handler
+                0x08000b80                CAN1_SCE_Handler
+                0x08000b80                DMA1_Stream0_Handler
+                0x08000b80                OTG_HS_EP1_OUT_Handler
+                0x08000b80                EXTI1_Handler
+                0x08000b80                FMC_Handler
+                0x08000b80                EXTI3_Handler
+                0x08000b80                EXTI2_Handler
+                0x08000b80                UART4_Handler
+                0x08000b80                CAN2_RX1_Handler
+                0x08000b80                EXTI9_5_Handler
+                0x08000b80                USART1_Handler
+                0x08000b80                CAN2_SCE_Handler
+                0x08000b80                TIM3_Handler
+                0x08000b80                DMA2_Stream6_Handler
+                0x08000b80                Default_Handler
+                0x08000b80                DCMI_Handler
+                0x08000b80                TIM1_TRG_COM_TIM11_Handler
+                0x08000b80                RTC_Alarm_Handler
+                0x08000b80                TIM4_Handler
+                0x08000b80                TIM8_UP_TIM13_Handler
+                0x08000b80                CAN2_TX_Handler
+                0x08000b80                SPI2_Handler
+                0x08000b80                DMA2_Stream1_Handler
+                0x08000b80                DMA1_Stream2_Handler
+                0x08000b80                EXTI0_Handler
+                0x08000b80                TIM8_BRK_TIM12_Handler
+                0x08000b80                CAN2_RX0_Handler
+                0x08000b80                DMA2_Stream5_Handler
+                0x08000b80                DMA1_Stream6_Handler
+                0x08000b80                SDIO_Handler
+                0x08000b80                FMPI2C1_ERR_Handler
+                0x08000b80                SPI1_Handler
+                0x08000b80                I2C2_EV_Handler
+                0x08000b80                SPDIF_Rx_Handler
+                0x08000b80                DMA2_Stream2_Handler
+                0x08000b80                SPI3_Handler
+                0x08000b80                DMA2_Stream0_Handler
+                0x08000b80                RCC_Handler
+                0x08000b80                PVD_Handler
+                0x08000b80                UART5_Handler
+                0x08000b80                DMA1_Stream5_Handler
+                0x08000b80                TIM5_Handler
+                0x08000b80                QuadSPI_Handler
+                0x08000b80                TIM7_Handler
+                0x08000b80                TIM8_TRG_COM_TIM14_Handler
+                0x08000b80                CAN1_TX_Handler
+                0x08000b80                FPU_Handler
+                0x08000b80                FMPI2C1_Handler
+                0x08000b80                DMA1_Stream4_Handler
+                0x08000b80                DebugMonitor_Handler
+                0x08000b80                OTG_HS_WKUP_Handler
+                0x08000b80                OTG_FS_WKUP_Handler
+                0x08000b80                SPI4_Handler
+                0x08000b80                OTG_HS_EP1_IN_Handler
+                0x08000b88                HardFault_Handler
+                0x08000b90                MemManage_Handler
+                0x08000b98                BusFault_Handler
+                0x08000ba0                SVCall_Handler
+ .text          0x08000bb0      0x348 object/cm4.o
+                0x08000c1c                __SysTick_init
+                0x08000ca0                SysTickIntDisable
+                0x08000cc0                SysTickIntEnable
+                0x08000ce0                __SysTick_enable
+                0x08000d0c                __sysTick_disable
+                0x08000d38                __getSysTickCount
+                0x08000d50                __updateSysTick
+                0x08000da8                __getTime
+                0x08000ddc                __get__Second
+                0x08000df4                __get__Minute
+                0x08000e0c                __get__Hour
+                0x08000e24                SysTick_Handler
+                0x08000e58                __enable_fpu
+                0x08000e7c                ms_delay
+                0x08000ea6                getmsTick
+                0x08000eb4                wait_until
+                0x08000ee6                SYS_SLEEP_WFI
+ .text          0x08000ef8      0x308 object/sys_clock.o
+                0x08000ef8                __init_sys_clock
+                0x08000fc4                __APB1CLK_FREQ
+                0x08001040                __APB2CLK_FREQ
+                0x080010bc                __PLL_SYS_CLK
+                0x08001154                __AHB_CLK
+ *(.rodata)
+ .rodata        0x08001200       0x20 object/bootloader.o
+                0x08001200                STACK_START
+ .rodata        0x08001220       0x18 object/sys_clock.o
+                0x08001220                AHBPrescTable
+                0x08001230                APBPrescTable
+                0x08001238                        . = ALIGN (0x4)
+                0x08001238                        _etext = .
+                0x08001238                        _la_data = LOADADDR (.data)
+
+.glue_7         0x08001238        0x0
+ .glue_7        0x08001238        0x0 linker stubs
+
+.glue_7t        0x08001238        0x0
+ .glue_7t       0x08001238        0x0 linker stubs
+
+.vfp11_veneer   0x08001238        0x0
+ .vfp11_veneer  0x08001238        0x0 linker stubs
+
+.v4_bx          0x08001238        0x0
+ .v4_bx         0x08001238        0x0 linker stubs
+
+.iplt           0x08001238        0x0
+ .iplt          0x08001238        0x0 object/bootloader.o
+
+.rel.dyn        0x08001238        0x0
+ .rel.iplt      0x08001238        0x0 object/bootloader.o
+
+.data           0x20000000        0x0 load address 0x08001238
+                0x20000000                        _sdata = .
+ *(.data)
+ .data          0x20000000        0x0 object/bootloader.o
+ .data          0x20000000        0x0 object/cm4.o
+ .data          0x20000000        0x0 object/sys_clock.o
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _edata = .
+
+.igot.plt       0x20000000        0x0 load address 0x08001238
+ .igot.plt      0x20000000        0x0 object/bootloader.o
+
+.bss            0x20000000       0x1c load address 0x08001238
+                0x20000000                        _sbss = .
+ *(.bss)
+ .bss           0x20000000        0xc object/bootloader.o
+                0x20000000                _bss_size
+                0x20000004                _data_size
+                0x20000008                _text_size
+ .bss           0x2000000c       0x10 object/cm4.o
+ .bss           0x2000001c        0x0 object/sys_clock.o
+                0x2000001c                        _ebss = .
+OUTPUT(bootloader/bootloader elf32-littlearm)
+LOAD linker stubs
+
+.comment        0x00000000       0x26
+ .comment       0x00000000       0x26 object/bootloader.o
+                                 0x27 (size before relaxing)
+ .comment       0x00000026       0x27 object/cm4.o
+ .comment       0x00000026       0x27 object/sys_clock.o
+
+.ARM.attributes
+                0x00000000       0x32
+ .ARM.attributes
+                0x00000000       0x32 object/bootloader.o
+ .ARM.attributes
+                0x00000032       0x32 object/cm4.o
+ .ARM.attributes
+                0x00000064       0x32 object/sys_clock.o

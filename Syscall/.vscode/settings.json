@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "unistd.h": "c",
+        "syscall_def.h": "c",
+        "stm32_startup.h": "c",
+        "syscall.h": "c",
+        "sys_init.h": "c",
+        "kunistd.h": "c",
+        "types.h": "c",
+        "sys_usart.h": "c"
+    }
+}
